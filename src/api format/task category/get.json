@@ -1,0 +1,9 @@
+// Response body should contain following
+{
+    "token":"token",
+    "category_name":"category1",
+    "category_description":"coding for fun",
+    "category_color":"red",
+    "category_tasks":["tasks_name_1", "tasks_name_2"],
+    "last_modified_time":"timestamp"
+}

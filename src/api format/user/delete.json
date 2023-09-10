@@ -1,0 +1,5 @@
+//  Request body should contain following params
+{
+    "token":"token",
+    "user_id":"user_id"
+}

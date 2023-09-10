@@ -1,0 +1,6 @@
+//  Request body should contain following params
+{
+    "user_name":"username",
+    "user_password":"password",
+    "email":"sample_email@sample.com"
+}

@@ -1,0 +1,7 @@
+// Request should contain following params where
+// some_field can be either task_name/task_color/...
+{
+    "token":"token",
+    "task_id": "task_id",
+    "some_field": "updated_field"
+}
