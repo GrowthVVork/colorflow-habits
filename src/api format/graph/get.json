@@ -1,0 +1,7 @@
+// Response body should contain following
+{
+    "token":"token",
+    "start_time":"start_time_of_activity",
+    "end_time":"end_time_of_activity",
+    "graph_type":"graph_type_id"
+}
