@@ -1,0 +1,7 @@
+// Response body should contain following
+{
+    "token":"token",
+    "user_name":"username",
+    "email":"sample_email@sample.com",
+    "last_modified_time":"timestamp"
+}

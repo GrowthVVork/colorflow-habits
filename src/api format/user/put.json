@@ -1,0 +1,7 @@
+// Request should contain following params where
+// some_field can be either user_name/user_email/...
+{
+    "token":"token",
+    "user_id":"some_user_id",
+    "some_field": "updated_field"
+}
