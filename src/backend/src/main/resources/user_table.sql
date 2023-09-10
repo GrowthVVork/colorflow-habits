@@ -6,5 +6,5 @@ CREATE TABLE IF NOT EXISTS colorflow.user(
 	create_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	last_modified TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (user_id),
-    UNIQUE (email)
+    UNIQUE (user_email)
 );
