@@ -1,0 +1,9 @@
+// Response body should contain following
+{
+    "token":"token",
+    "task_name":"task1",
+    "task_description":"coding for fun",
+    "task_color":"red",
+    "task_status":"false",
+    "task_category":"misc (category_name)",
+}
