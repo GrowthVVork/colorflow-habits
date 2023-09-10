@@ -1,0 +1,7 @@
+// Request should contain following params where
+// some_field can be either category_name/category_color/...
+{
+    "token":"token",
+    "category_id": "category_id",
+    "some_field": "updated_field"
+}
