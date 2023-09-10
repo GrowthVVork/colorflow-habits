@@ -1,0 +1,10 @@
+CREATE TABLE IF NOT EXISTS colorflow.user(
+    user_id INT AUTO_INCREMENT,
+	user_name VARCHAR(100) NOT NULL,
+	user_password VARCHAR(1024) NOT NULL,
+	user_email VARCHAR(100) NOT NULL,
+	create_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	last_modified TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (user_id),
+    UNIQUE (email)
+);
