@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS colorflow.task(
     task_id INT AUTO_INCREMENT,
 	task_name VARCHAR(100) NOT NULL,
 	task_description VARCHAR(500),
-	task_color CHAR(7),
+	task_color CHAR(7) NOT NULL,
 	task_status BOOLEAN DEFAULT true,
 	create_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	last_modified TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
