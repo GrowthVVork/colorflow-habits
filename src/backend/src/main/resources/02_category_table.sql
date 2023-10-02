@@ -5,5 +5,6 @@ CREATE TABLE IF NOT EXISTS colorflow.category(
 	category_color CHAR(7) NOT NULL,
 	create_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	last_modified TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (category_id)
+    PRIMARY KEY (category_id),
+    UNIQUE (category_name)
 );
