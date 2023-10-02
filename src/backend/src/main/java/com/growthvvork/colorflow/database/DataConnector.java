@@ -1,17 +1,14 @@
 package com.growthvvork.colorflow.database;
 
+import com.growthvvork.colorflow.ColorflowApplication;
+import com.growthvvork.colorflow.service.FileService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
-import org.springframework.core.io.support.ResourcePatternResolver;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
@@ -32,28 +29,20 @@ public class DataConnector {
     public List<Map<String, Object>> fetchQueryResults(String query) {
         return jdbcTemplate.queryForList(query);
     }
-    public void executeSqlScripts(String... scriptPaths) {
-        for (String scriptPath : scriptPaths) {
-            try {
-                ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-                Resource[] resources = resolver.getResources(scriptPath);
-                // Sort resources based on first 2 characters of its name.
-                // All passed files must follow convention of XX_filename.sql where XX denotes number
-                Arrays.sort(resources, Comparator.comparing(resource ->  Integer.parseInt(resource.getFilename().substring(0, 2))));
 
-                for (Resource resource : resources) {
-                    try (BufferedReader reader = new BufferedReader(new InputStreamReader(resource.getInputStream()))) {
-                        StringBuilder script = new StringBuilder();
-                        String line;
-                        while ((line = reader.readLine()) != null) {
-                            script.append(line).append("\n");
-                        }
-                        jdbcTemplate.execute(script.toString());
-                    }
-                }
-            } catch (IOException e) {
-                // Handle exception if necessary
-                e.printStackTrace();
+    @Autowired
+    private ResourceLoader resourceLoader;
+
+    @Autowired
+    private FileService fileService;
+
+    public void executeSqlScripts(String... scriptPaths) {
+        Logger logger = LoggerFactory.getLogger(ColorflowApplication.class);
+        for (String scriptPath : scriptPaths) {
+            for(String query : fileService.readFiles(fileService.getFilesSorted(scriptPath))) {
+//                logger.error(query);
+//                The error was fixed by referring : https://stackoverflow.com/questions/69960902/error-3780-referencing-column-and-referenced-column-in-foreign-key-constraint-a
+                executeQuery(query);
             }
         }
     }

@@ -9,8 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 @SpringBootApplication
 public class ColorflowApplication {
-//	@Autowired
-//	private SchemaInitializer schemaInitializer;
 	@Autowired
 	private DataConnector dataConnector;
 
@@ -22,7 +20,7 @@ public class ColorflowApplication {
 		Logger logger = LoggerFactory.getLogger(ColorflowApplication.class);
 		logger.info("Executing SQL Scripts");
 			try {
-				dataConnector.executeSqlScripts("/*.sql");
+				dataConnector.executeSqlScripts(".sql");
 				logger.info("SQL Scripts executed successfully");
 			} catch (Exception e) {
 				logger.error("Error executing SQL Scripts", e);
